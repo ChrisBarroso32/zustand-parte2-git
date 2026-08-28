@@ -8,6 +8,6 @@ type CounterStore = {
 
 export const useCounterStore = create<CounterStore>((set) => ({
     count: 0,
-    increment: () => {set({count: 1});},
-    decrement: () => {set({count: -1});},
+    increment: () => set((state) => ({ count: state.count + 1 })),
+    decrement: () => set((state) => ({ count: state.count - 1 })),
 }));
