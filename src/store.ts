@@ -1,6 +1,9 @@
-import {create} from "zustand";
+import { create } from "zustand";
 
-export const useCountStore = create((set) =>
-    ({
-        count: 0
-    }));
+type CounterStore = {
+    count: number;
+};
+
+export const useCounterStore = create<CounterStore>((set) => ({
+    count: 0,
+}));
