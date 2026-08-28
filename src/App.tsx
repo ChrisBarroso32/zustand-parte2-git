@@ -1,4 +1,9 @@
 import {useCounterStore} from "./store.ts";
+import {useEffect} from "react";
+
+const setCount = () => {
+    useCounterStore.setState({ count: 1 });
+};
 
 const App = () => {
     const count = useCounterStore((state) => state.count);
@@ -9,6 +14,11 @@ const App = () => {
 const OtherComponent = ({ count }: {count: number}) => {
     const incrementAsync = useCounterStore((state) => state.incrementAsync);
     const decrement = useCounterStore((state) => state.decrement);
+
+    useEffect(() => {
+        setCount();
+    }, []);
+
     return (
         <div>
             {count}
