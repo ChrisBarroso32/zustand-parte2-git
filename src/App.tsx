@@ -1,16 +1,12 @@
-import { useState } from "react";
-
-type OtherComponentProps = {
-    count: number;
-};
+import {useCounterStore} from "./store.ts";
 
 const App = () => {
-    const [count] = useState<number>(0);
+    const count = useCounterStore((state) => state.count);
 
     return <OtherComponent count={count} />;
 };
 
-const OtherComponent = ({ count }: OtherComponentProps) => {
+const OtherComponent = ({ count }: {count: number}) => {
     return <div>{count}</div>;
 };
 
